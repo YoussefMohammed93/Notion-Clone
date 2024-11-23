@@ -5,10 +5,10 @@ import { Footer } from "./_components/footer";
 export default function MarktingPage() {
   return (
     <div className="min-h-full flex flex-col">
-      <div className="flex flex-col items-center justify-center md:justify-start text-center flex-1 gap-y-8 px-5 pb-10">
+      <section className="flex flex-col items-center justify-center md:justify-start text-center flex-1 gap-y-8 px-5 pb-10">
         <Heading />
         <Heroes />
-      </div>
+      </section>
       <Footer />
     </div>
   );

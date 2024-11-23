@@ -9,16 +9,16 @@ const Heroes = () => {
             fill
             alt="team-works"
             loading="eager"
-            src="/teamworks.png"
-            className="object-contain block dark:hidden"
+            src="/team.svg"
+            className="object-cover block dark:hidden"
             sizes="(max-width: 640px) 280px, (max-width: 768px) 350px, 400px"
           />
           <Image
             fill
             alt="team-works"
             loading="eager"
-            src="/teamworks-dark.png"
-            className="object-contain hidden dark:block"
+            src="/team-dark.svg"
+            className="object-cover hidden dark:block"
             sizes="(max-width: 640px) 280px, (max-width: 768px) 350px, 400px"
           />
         </div>
