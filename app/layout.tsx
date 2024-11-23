@@ -1,6 +1,7 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import { SiteConfig } from "@/lib/site";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -15,8 +16,17 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Notion clone",
-  description: "Notion clone by Youssef Mohammed",
+  title: {
+    default: SiteConfig.name,
+    template: `%s | ${SiteConfig.name}`,
+  },
+  description: SiteConfig.description,
+  icons: [
+    {
+      url: "/notion.png",
+      href: "/notion.png",
+    },
+  ],
 };
 
 export default function RootLayout({
