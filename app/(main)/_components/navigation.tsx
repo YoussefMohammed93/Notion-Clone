@@ -11,16 +11,16 @@ import { Item } from "./item";
 import { toast } from "sonner";
 import { cn } from "@/lib/utils";
 import { UserItem } from "./user-item";
+import { useMutation } from "convex/react";
 import { useMediaQuery } from "usehooks-ts";
-import { api } from "@/convex/_generated/api";
 import { usePathname } from "next/navigation";
-import { useMutation, useQuery } from "convex/react";
+import { api } from "@/convex/_generated/api";
+import { DocumentList } from "./document-list";
 import { ElementRef, useEffect, useRef, useState } from "react";
 
 const Navigation = () => {
   const pathname = usePathname();
   const isResizingRef = useRef(false);
-  const documents = useQuery(api.documents.get);
   const create = useMutation(api.documents.create);
   const navbarRef = useRef<ElementRef<"div">>(null);
   const isMobile = useMediaQuery("(max-width: 768px)");
@@ -144,7 +144,7 @@ const Navigation = () => {
           role="button"
           onClick={collapse}
           className={cn(
-            "w-8 h-8 flex items-center justify-center absolute top-3 right-2 p-1 text-muted-foreground transition-all hover:bg-neutral-200 dark:hover:bg-neutral-600 opacity-0 group-hover/sidebar:opacity-100",
+            "w-8 h-8 flex items-center justify-center absolute top-3 right-2 rounded-sm p-1 text-muted-foreground transition-all hover:bg-neutral-200 dark:hover:bg-neutral-600 opacity-0 group-hover/sidebar:opacity-100",
             isMobile && "opacity-100"
           )}
         >
@@ -157,9 +157,7 @@ const Navigation = () => {
           <Item onClick={onCreate} label="New page" icon={PlusCircle} />
         </div>
         <div className="mt-3">
-          {documents?.map((document) => (
-            <p key={document._id}>{document.title}</p>
-          ))}
+          <DocumentList />
         </div>
         <div
           onClick={resetWidth}

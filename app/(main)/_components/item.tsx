@@ -1,8 +1,14 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 
+import { toast } from "sonner";
 import { cn } from "@/lib/utils";
+import { useMutation } from "convex/react";
+import { useRouter } from "next/navigation";
+import { api } from "@/convex/_generated/api";
 import { Id } from "@/convex/_generated/dataModel";
-import { ChevronDown, ChevronRight, LucideIcon } from "lucide-react";
+import { Skeleton } from "@/components/ui/skeleton";
+import { ChevronDown, ChevronRight, LucideIcon, Plus } from "lucide-react";
 
 interface ItemProps {
   label: string;
@@ -23,14 +29,41 @@ export const Item = ({
   active,
   onClick,
   isSearch,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   onExpand,
   expanded,
   level = 0,
   icon: Icon,
   documentIcon,
 }: ItemProps) => {
+  const router = useRouter();
+  const create = useMutation(api.documents.create);
   const ChevronIcon = expanded ? ChevronDown : ChevronRight;
+
+  const handleExpand = (
+    event: React.MouseEvent<HTMLDivElement, MouseEvent>
+  ) => {
+    event.stopPropagation();
+    onExpand?.();
+  };
+
+  const onCreate = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    event.stopPropagation();
+    if (!id) return;
+
+    const promise = create({ title: "Untitled", parentDocument: id }).then(
+      (documentId) => {
+        if (!expanded) {
+          onExpand?.();
+        }
+        // router.push(`/documents/${documentId}`);
+      }
+    );
+    toast.promise(promise, {
+      success: "New note created!",
+      loading: "Creating a new note...",
+      error: "Failed to create a new note.",
+    });
+  };
 
   return (
     <div
@@ -47,10 +80,10 @@ export const Item = ({
       {!!id && (
         <div
           role="button"
-          onClick={() => {}}
+          onClick={handleExpand}
           className="h-full rounded-sm dark:bg-neutral-600 hover:bg-neutral-300 mr-1"
         >
-          <ChevronIcon className="size-4 shrink-0 text-muted-foreground/50" />
+          <ChevronIcon className="size-6 shrink-0 text-muted-foreground/50" />
         </div>
       )}
       {documentIcon ? (
@@ -62,10 +95,35 @@ export const Item = ({
       )}
       <span className="truncate">{label}</span>
       {isSearch && (
-        <kbd className="inline-flex items-center gap-1 rounded h-6 text-[10px] ml-auto pointer-events-none select-none px-1.5 border bg-muted font-mono font-medium text-muted-foreground opacity-100">
+        <kbd className="hidden md:inline-flex items-center gap-1 rounded h-6 text-[10px] ml-auto pointer-events-none select-none px-1.5 border bg-muted font-mono font-medium text-muted-foreground opacity-100">
           <span className="text-xs">Shift + K</span>
         </kbd>
       )}
+      {!!id && (
+        <div
+          role="button"
+          onClick={onCreate}
+          className="flex items-center ml-auto gap-x-2"
+        >
+          <div className="opacity-0 group-hover:opacity-100 h-full ml-auto rounded-sm hover:bg-neutral-300 dark:hover:bg-neutral-600">
+            <Plus className="size-6 text-muted-foreground" />
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
+
+Item.Skeleton = function ItemSkeleton({ level }: { level?: number }) {
+  return (
+    <div
+      className="flex gap-x-2 py-[3px]"
+      style={{
+        paddingLeft: level ? `${level * 20 + 12}px` : "12px",
+      }}
+    >
+      <Skeleton className="w-4 h-4" />
+      <Skeleton className="w-[30%] h-4" />
     </div>
   );
 };
