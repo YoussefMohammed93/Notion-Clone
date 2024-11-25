@@ -32,7 +32,7 @@ interface ItemProps {
   active?: boolean;
   expanded?: boolean;
   isSearch?: boolean;
-  onClick: () => void;
+  onClick?: () => void;
   id?: Id<"documents">;
   onExpand?: () => void;
   documentIcon?: string;

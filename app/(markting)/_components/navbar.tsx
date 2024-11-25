@@ -26,10 +26,7 @@ export const Navbar = () => {
         {!isAuthenticated && !isLoading && (
           <>
             <SignInButton mode="modal">
-              <Button variant="outline">Login</Button>
-            </SignInButton>
-            <SignInButton mode="modal">
-              <Button>Get notion free</Button>
+              <Button variant="default">Login</Button>
             </SignInButton>
           </>
         )}
