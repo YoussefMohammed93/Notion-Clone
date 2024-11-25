@@ -24,9 +24,11 @@ import { useMediaQuery } from "usehooks-ts";
 import { usePathname } from "next/navigation";
 import { api } from "@/convex/_generated/api";
 import { DocumentList } from "./document-list";
+import { useSearch } from "@/hooks/use-search";
 import { ElementRef, useEffect, useRef, useState } from "react";
 
 const Navigation = () => {
+  const search = useSearch();
   const pathname = usePathname();
   const isResizingRef = useRef(false);
   const create = useMutation(api.documents.create);
@@ -160,7 +162,7 @@ const Navigation = () => {
         </div>
         <div>
           <UserItem />
-          <Item onClick={() => {}} label="Search" icon={Search} isSearch />
+          <Item onClick={search.onOpen} label="Search" icon={Search} isSearch />
           <Item onClick={() => {}} label="Settings" icon={Settings} />
           <Item onClick={onCreate} label="New page" icon={PlusCircle} />
         </div>

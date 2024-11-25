@@ -111,7 +111,7 @@ export const Item = ({
         <div
           role="button"
           onClick={handleExpand}
-          className="h-full rounded-sm dark:bg-neutral-600 hover:bg-neutral-300 mr-1"
+          className="h-full rounded-sm hover:dark:bg-neutral-600 hover:bg-neutral-300 mr-1"
         >
           <ChevronIcon className="size-5 shrink-0 text-muted-foreground/50" />
         </div>
@@ -126,7 +126,7 @@ export const Item = ({
       <span className="truncate">{label}</span>
       {isSearch && (
         <kbd className="hidden md:inline-flex items-center gap-1 rounded h-6 text-[10px] ml-auto pointer-events-none select-none px-1.5 border bg-muted font-mono font-medium text-muted-foreground opacity-100">
-          <span className="text-xs">Shift + K</span>
+          <span className="text-xs">CTRL + K</span>
         </kbd>
       )}
       {!!id && (
@@ -177,7 +177,7 @@ Item.Skeleton = function ItemSkeleton({ level }: { level?: number }) {
     <div
       className="flex gap-x-2 py-[3px]"
       style={{
-        paddingLeft: level ? `${level * 20 + 12}px` : "12px",
+        paddingLeft: level ? `${level * 20 + 15}px` : "12px",
       }}
     >
       <Skeleton className="w-4 h-4" />
