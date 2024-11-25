@@ -26,10 +26,11 @@ export const UserItem = () => {
               <Avatar className="size-8">
                 <AvatarImage src={user?.imageUrl}></AvatarImage>
               </Avatar>
-              <span className="text-start font-medium line-clamp-1">
-                {user?.fullName}&apos;s notion
+              <span className="w-full text-start font-medium truncate">
+                {user?.fullName}&apos;s Notion
               </span>
             </div>
+
             <ChevronsLeftRight className="rotate-90 text-muted-foreground" />
           </div>
         </DropdownMenuTrigger>
