@@ -1,7 +1,6 @@
 "use client";
 
 import Logo from "./logo";
-import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { useConvexAuth } from "convex/react";
 import { Spinner } from "@/components/spinner";
@@ -36,9 +35,6 @@ export const Navbar = () => {
         )}
         {isAuthenticated && !isLoading && (
           <>
-            <Button variant="outline" asChild>
-              <Link href="/documents">Enter notion</Link>
-            </Button>
             <UserButton afterSignOutUrl="/" />
           </>
         )}
