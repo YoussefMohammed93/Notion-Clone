@@ -1,4 +1,5 @@
 import "./globals.css";
+import { Toaster } from "sonner";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { SiteConfig } from "@/lib/site";
@@ -49,6 +50,7 @@ export default function RootLayout({
             disableTransitionOnChange
             storageKey="notion-theme-2"
           >
+            <Toaster position="bottom-right" />
             {children}
           </ThemeProvider>
         </ConvexClientProvider>
