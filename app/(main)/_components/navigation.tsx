@@ -1,6 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
+import { UserItem } from "./user-item";
 import { useMediaQuery } from "usehooks-ts";
 import { usePathname } from "next/navigation";
 import { ChevronsLeft, MenuIcon } from "lucide-react";
@@ -128,7 +129,7 @@ const Navigation = () => {
           <ChevronsLeft className="size-6" />
         </div>
         <div>
-          <p>Action items</p>
+          <UserItem />
         </div>
         <div className="mt-3">
           <p>Documents</p>
