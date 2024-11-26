@@ -25,11 +25,13 @@ import { usePathname } from "next/navigation";
 import { api } from "@/convex/_generated/api";
 import { DocumentList } from "./document-list";
 import { useSearch } from "@/hooks/use-search";
+import { UseSettings } from "@/hooks/use-settings";
 import { ElementRef, useEffect, useRef, useState } from "react";
 
 const Navigation = () => {
   const search = useSearch();
   const pathname = usePathname();
+  const settings = UseSettings();
   const isResizingRef = useRef(false);
   const create = useMutation(api.documents.create);
   const navbarRef = useRef<ElementRef<"div">>(null);
@@ -163,7 +165,7 @@ const Navigation = () => {
         <div>
           <UserItem />
           <Item onClick={search.onOpen} label="Search" icon={Search} isSearch />
-          <Item onClick={() => {}} label="Settings" icon={Settings} />
+          <Item onClick={settings.onOpen} label="Settings" icon={Settings} />
           <Item onClick={onCreate} label="New page" icon={PlusCircle} />
         </div>
         <div className="mt-3">
