@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 
 import {
@@ -28,6 +29,7 @@ import { useSearch } from "@/hooks/use-search";
 import { UseSettings } from "@/hooks/use-settings";
 import { useParams, usePathname } from "next/navigation";
 import { ElementRef, useEffect, useRef, useState } from "react";
+import { useLayoutContext } from "@/components/providers/layout-provider";
 
 const Navigation = () => {
   const search = useSearch();
@@ -39,8 +41,9 @@ const Navigation = () => {
   const navbarRef = useRef<ElementRef<"div">>(null);
   const isMobile = useMediaQuery("(max-width: 768px)");
   const sidebarRef = useRef<ElementRef<"aside">>(null);
+  const { isCollapsed, setIsCollapsed } = useLayoutContext();
+
   const [isResetting, setIsResetting] = useState(false);
-  const [isCollapsed, setIsCollapsed] = useState(isMobile);
 
   useEffect(() => {
     if (isMobile) {
@@ -48,7 +51,6 @@ const Navigation = () => {
     } else {
       resetWidth();
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isMobile]);
 
   useEffect(() => {
@@ -90,7 +92,6 @@ const Navigation = () => {
 
   const handleMouseUp = () => {
     isResizingRef.current = false;
-
     document.removeEventListener("mouseup", handleMouseUp);
     document.removeEventListener("mousemove", handleMouseMove);
   };
@@ -147,9 +148,10 @@ const Navigation = () => {
       <aside
         ref={sidebarRef}
         className={cn(
-          "group/sidebar relative h-full flex flex-col w-60 overflow-y-auto bg-secondary z-[9999]",
+          "group/sidebar relative h-full flex flex-col w-60 overflow-y-auto bg-secondary",
           isResetting && "transition-all ease-in-out duration-300",
-          isMobile && (isCollapsed ? "w-0" : "w-full")
+          isMobile && (isCollapsed ? "w-0" : "w-full"),
+          isMobile && !isCollapsed && "z-[999999]"
         )}
         role="complementary"
         aria-hidden={isCollapsed}

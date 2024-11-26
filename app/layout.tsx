@@ -5,6 +5,7 @@ import localFont from "next/font/local";
 import { SiteConfig } from "@/lib/site";
 import { ModalProvider } from "@/components/providers/modal-provider";
 import { ThemeProvider } from "@/components/providers/theme-provider";
+import { LayoutProvider } from "@/components/providers/layout-provider";
 import { ConvexClientProvider } from "@/components/providers/convex-provider";
 
 const geistSans = localFont({
@@ -43,19 +44,21 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <ConvexClientProvider>
-          <ThemeProvider
-            enableSystem
-            attribute="class"
-            defaultTheme="system"
-            disableTransitionOnChange
-            storageKey="notion-theme-2"
-          >
-            {children}
-            <ModalProvider />
-            <Toaster position="bottom-right" />
-          </ThemeProvider>
-        </ConvexClientProvider>
+        <LayoutProvider>
+          <ConvexClientProvider>
+            <ThemeProvider
+              enableSystem
+              attribute="class"
+              defaultTheme="system"
+              disableTransitionOnChange
+              storageKey="notion-theme-2"
+            >
+              {children}
+              <ModalProvider />
+              <Toaster position="bottom-right" />
+            </ThemeProvider>
+          </ConvexClientProvider>
+        </LayoutProvider>
       </body>
     </html>
   );
