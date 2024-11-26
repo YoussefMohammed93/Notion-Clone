@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
+import { SquarePen } from "lucide-react";
 import { useMutation } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import { Input } from "@/components/ui/input";
@@ -63,11 +64,12 @@ export const Title = ({ initialData }: TitleProps) => {
       ) : (
         <Button
           size="sm"
-          variant="ghost"
+          variant="outline"
           onClick={enableInput}
           className="px-3 py-2 text-base"
         >
           <span className="truncate">{initialData?.title}</span>
+          <SquarePen className="size-5" />
         </Button>
       )}
     </div>

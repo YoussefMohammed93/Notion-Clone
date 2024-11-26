@@ -22,7 +22,7 @@ export const UserItem = () => {
             role="button"
             className="w-full flex items-center text-sm p-3 hover:bg-primary/5"
           >
-            <div className="flex items-center gap-x-2 max-w-[150px]">
+            <div className="flex items-center gap-x-2 max-w-[300px] md:max-w-[150px]">
               <Avatar className="size-8">
                 <AvatarImage src={user?.imageUrl}></AvatarImage>
               </Avatar>
