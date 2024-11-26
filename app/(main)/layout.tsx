@@ -25,7 +25,7 @@ const MainLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <div
       className={cn(
-        "h-full flex dark:bg-[#1f1f1f] absolute overflow-hidden md:relative md:overflow-auto",
+        "w-full h-full flex dark:bg-[#1f1f1f] absolute overflow-hidden md:relative md:overflow-auto",
         isCollapsed && "relative overflow-auto"
       )}
     >
