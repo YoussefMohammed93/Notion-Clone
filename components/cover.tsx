@@ -8,6 +8,7 @@ import { useMutation } from "convex/react";
 import { useParams } from "next/navigation";
 import { ImageIcon, X } from "lucide-react";
 import { api } from "@/convex/_generated/api";
+import { useEdgeStore } from "@/lib/edgestore";
 import { Id } from "@/convex/_generated/dataModel";
 import { UseCoverImage } from "@/hooks/use-cover-image";
 import { CoverDeleteModal } from "./modals/cover-delete-modal";
@@ -19,12 +20,19 @@ interface CoverImageProps {
 
 export const CoverImage = ({ url, preview }: CoverImageProps) => {
   const params = useParams();
+  const edgestore = useEdgeStore();
   const coverImage = UseCoverImage();
   const removeCoverImage = useMutation(api.documents.removeCoverImage);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
-  const onRemove = async (): Promise<void> => {
-    await removeCoverImage({
+  const onRemove = async () => {
+    if (url) {
+      await edgestore.edgestore.publicFiles.delete({
+        url: url,
+      });
+    }
+
+    removeCoverImage({
       id: params.documentId as Id<"documents">,
     });
   };
@@ -32,7 +40,7 @@ export const CoverImage = ({ url, preview }: CoverImageProps) => {
   return (
     <div
       className={cn(
-        "w-full relative h-[35vh] group",
+        "w-full relative h-[36vh] group",
         !url && "h-[8vh]",
         url && "bg-muted"
       )}
@@ -43,7 +51,7 @@ export const CoverImage = ({ url, preview }: CoverImageProps) => {
           <Button
             size="sm"
             variant="outline"
-            onClick={coverImage.onOpen}
+            onClick={() => coverImage.onReplace(url)}
             className="text-xs text-muted-foreground"
           >
             <ImageIcon className="size-5" />

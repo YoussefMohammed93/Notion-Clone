@@ -6,6 +6,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import { toast } from "sonner";
+import { useState } from "react";
 import { Button } from "../ui/button";
 
 interface CoverDeleteModalProps {
@@ -23,14 +24,20 @@ export const CoverDeleteModal: React.FC<CoverDeleteModalProps> = ({
   title,
   message,
 }) => {
+  const [isDeleting, setIsDeleting] = useState(false);
+
   const handleConfirm = async () => {
+    setIsDeleting(true);
     const promise = onConfirm();
     toast.promise(promise, {
       loading: "Deleting cover image...",
       success: "Cover image removed!",
       error: "Failed to remove cover image.",
     });
-    promise.finally(() => onClose());
+    promise.finally(() => {
+      setIsDeleting(false);
+      onClose();
+    });
   };
 
   return (
@@ -47,7 +54,11 @@ export const CoverDeleteModal: React.FC<CoverDeleteModalProps> = ({
           <Button variant="outline" onClick={onClose}>
             Cancel
           </Button>
-          <Button variant="destructive" onClick={handleConfirm}>
+          <Button
+            variant="destructive"
+            onClick={handleConfirm}
+            disabled={isDeleting}
+          >
             Confirm
           </Button>
         </DialogFooter>
