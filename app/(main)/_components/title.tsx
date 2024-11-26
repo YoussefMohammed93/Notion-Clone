@@ -49,8 +49,8 @@ export const Title = ({ initialData }: TitleProps) => {
   };
 
   return (
-    <div className="flex items-center gap-x-1">
-      {!!initialData?.icon && <p>{initialData?.icon}</p>}
+    <div className="flex items-center gap-x-3">
+      {!!initialData?.icon && <p className="text-xl">{initialData?.icon}</p>}
       {isEditing ? (
         <Input
           value={title}
@@ -77,5 +77,5 @@ export const Title = ({ initialData }: TitleProps) => {
 };
 
 Title.Skeleton = function TitleSkeleton() {
-  return <Skeleton className="w-16 h-6 rounded-sm" />;
+  return <Skeleton className="w-28 h-6 rounded-sm bg-primary/10" />;
 };

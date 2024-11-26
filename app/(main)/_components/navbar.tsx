@@ -8,6 +8,7 @@ import { MenuIcon } from "lucide-react";
 import { useParams } from "next/navigation";
 import { api } from "@/convex/_generated/api";
 import { Id } from "@/convex/_generated/dataModel";
+import { Skeleton } from "@/components/ui/skeleton";
 
 interface NavbarProps {
   isCollapsed: boolean;
@@ -24,7 +25,10 @@ export const Navbar = ({ isCollapsed, onResetWidth }: NavbarProps) => {
   if (document === undefined || document === null) {
     return (
       <nav className="w-full flex items-center justify-between gap-x-4 bg-background dark:bg-[#1f1f1f] px-3 py-2">
-        <Title.Skeleton />
+        <div className="flex gap-x-3">
+          <Skeleton className="size-6 rounded-sm bg-primary/10" />
+          <Title.Skeleton />
+        </div>
         <div className="flex items-center gap-x-2">
           <Menu.Skeleton />
         </div>
