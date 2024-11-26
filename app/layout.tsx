@@ -3,6 +3,7 @@ import { Toaster } from "sonner";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { SiteConfig } from "@/lib/site";
+import { EdgeStoreProvider } from "@/lib/edgestore";
 import { ModalProvider } from "@/components/providers/modal-provider";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import { LayoutProvider } from "@/components/providers/layout-provider";
@@ -46,17 +47,19 @@ export default function RootLayout({
       >
         <LayoutProvider>
           <ConvexClientProvider>
-            <ThemeProvider
-              enableSystem
-              attribute="class"
-              defaultTheme="system"
-              disableTransitionOnChange
-              storageKey="notion-theme-2"
-            >
-              {children}
-              <ModalProvider />
-              <Toaster position="bottom-right" />
-            </ThemeProvider>
+            <EdgeStoreProvider>
+              <ThemeProvider
+                enableSystem
+                attribute="class"
+                defaultTheme="system"
+                disableTransitionOnChange
+                storageKey="notion-theme-2"
+              >
+                {children}
+                <ModalProvider />
+                <Toaster position="bottom-right" />
+              </ThemeProvider>
+            </EdgeStoreProvider>
           </ConvexClientProvider>
         </LayoutProvider>
       </body>

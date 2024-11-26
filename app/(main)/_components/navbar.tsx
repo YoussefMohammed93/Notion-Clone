@@ -38,7 +38,7 @@ export const Navbar = ({ isCollapsed, onResetWidth }: NavbarProps) => {
 
   return (
     <>
-      <nav className="w-full flex items-center gap-x-4 bg-background dark:bg-[#1f1f1f] px-3 py-2">
+      <nav className="w-full flex items-center gap-x-4 bg-background border-b border-gray-200/60 dark:bg-[#1f1f1f] px-3 py-2">
         {isCollapsed && (
           <MenuIcon
             role="button"
