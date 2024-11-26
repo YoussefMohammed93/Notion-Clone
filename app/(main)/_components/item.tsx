@@ -123,7 +123,7 @@ export const Item = ({
           <Icon className="h-[18px] shrink-0 mr-2 text-muted-foreground" />
         </div>
       )}
-      <span className="truncate">{label}</span>
+      <span className="truncate mt-0.5">{label}</span>
       {isSearch && (
         <kbd className="hidden md:inline-flex items-center gap-1 rounded h-6 text-[10px] ml-auto pointer-events-none select-none px-1.5 border bg-muted font-mono font-medium text-muted-foreground opacity-100">
           <span className="text-xs">CTRL + K</span>
