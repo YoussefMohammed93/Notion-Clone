@@ -27,7 +27,7 @@ const Error = () => {
         />
       </div>
       <h2 className="text-xl font-medium text-muted-foreground">
-        Something went wrong!
+        Something went wrong, It seems that this page has been deleted!
       </h2>
       <Button asChild>
         <Link href="/documents">

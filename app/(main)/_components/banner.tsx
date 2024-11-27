@@ -47,7 +47,7 @@ export const Banner = ({ documentId }: BannerProps) => {
   return (
     <div className="w-full flex flex-col md:flex-row items-center justify-center gap-2 p-2 text-center text-sm text-white bg-destructive">
       <p className="text-lg md:text-base md:font-mono">
-        This page is in the Trash.
+        This note is in the Trash.
       </p>
       <div className="flex items-center gap-x-2">
         <Button
@@ -55,11 +55,11 @@ export const Banner = ({ documentId }: BannerProps) => {
           variant="secondary"
           className="hover:bg-white"
         >
-          Restore page <Undo />
+          Restore note <Undo />
         </Button>
         <ConfirmModal onConfirm={onRemove}>
           <Button variant="secondary" className="hover:bg-white">
-            Delete page <Trash />
+            Delete note <Trash />
           </Button>
         </ConfirmModal>
       </div>

@@ -102,6 +102,10 @@ body,
   padding-top: 8px !important;
 }
 
+.dark .bn-inline-content {
+  color: white !important;
+}
+
 .bn-block-content[data-content-type="numberedListItem"],
 .bn-block-content[data-content-type="bulletListItem"],
 .bn-block-content[data-content-type="checkListItem"] > div {

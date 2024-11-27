@@ -86,7 +86,7 @@ export const Toolbar = ({ preview, initialData }: ToolbarProps) => {
       {!!initialData?.icon && preview && (
         <p className="text-6xl pt-6">{initialData.icon}</p>
       )}
-      <div className="flex items-center gap-x-1 py-4 opacity-0 group-hover:opacity-100">
+      <div className="flex items-center gap-x-1 py-4 md:opacity-0 md:group-hover:opacity-100">
         {!initialData?.icon && !preview && (
           <IconPicker asChild onChange={onIconSelect}>
             <Button
@@ -124,7 +124,7 @@ export const Toolbar = ({ preview, initialData }: ToolbarProps) => {
         <div
           role="button"
           onClick={enableInput}
-          className="pb-3 text-5xl font-bold break-words outline-none text-[#3f3f3f] dark:text-[#cfcfcf]"
+          className="pb-3 text-5xl font-bold break-words outline-none text-[#3f3f3f] dark:text-white"
         >
           {initialData?.title}
         </div>

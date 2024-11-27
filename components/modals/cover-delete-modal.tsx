@@ -51,7 +51,7 @@ export const CoverDeleteModal: React.FC<CoverDeleteModalProps> = ({
         </DialogHeader>
         <p className="text-muted-foreground">{message}</p>
         <DialogFooter>
-          <Button variant="outline" onClick={onClose}>
+          <Button variant="outline" onClick={onClose} className="mt-2 md:mt-0">
             Cancel
           </Button>
           <Button

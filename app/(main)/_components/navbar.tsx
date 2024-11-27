@@ -3,6 +3,7 @@
 import { Menu } from "./menu";
 import { Title } from "./title";
 import { Banner } from "./banner";
+import { Publish } from "./publish";
 import { useQuery } from "convex/react";
 import { MenuIcon } from "lucide-react";
 import { useParams } from "next/navigation";
@@ -49,6 +50,7 @@ export const Navbar = ({ isCollapsed, onResetWidth }: NavbarProps) => {
         <div className="w-full flex items-center justify-between">
           <Title initialData={document} />
           <div className="flex items-center gap-x-2">
+            <Publish initialData={document} />
             <Menu documentId={document._id} />
           </div>
         </div>

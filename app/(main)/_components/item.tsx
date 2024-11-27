@@ -119,7 +119,7 @@ export const Item = ({
         <div className="shrink-0 mr-2 text-[18px]">{documentIcon}</div>
       ) : (
         <div>
-          <Icon className="h-[18px] shrink-0 mr-2 text-muted-foreground" />
+          <Icon className="h-[18px] w-[18px] shrink-0 mr-2 text-muted-foreground" />
         </div>
       )}
       <span className="truncate mt-0.5">{label}</span>

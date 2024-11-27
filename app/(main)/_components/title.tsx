@@ -50,7 +50,9 @@ export const Title = ({ initialData }: TitleProps) => {
 
   return (
     <div className="flex items-center gap-x-3">
-      {!!initialData?.icon && <p className="text-xl">{initialData?.icon}</p>}
+      {!!initialData?.icon && (
+        <p className="text-xl hidden sm:block">{initialData?.icon}</p>
+      )}
       {isEditing ? (
         <Input
           value={title}
