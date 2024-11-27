@@ -48,7 +48,7 @@ export const CoverImage = ({ url, preview }: CoverImageProps) => {
     >
       {!!url && <Image src={url} alt="Cover" fill className="object-cover" />}
       {url && !preview && (
-        <div className="flex items-center gap-x-3 absolute bottom-5 right-5 md:opacity-0 md:group-hover:opacity-100">
+        <div className="flex items-center gap-x-3 absolute bottom-5 right-5 transition duration-200 md:opacity-0 md:group-hover:opacity-100">
           <Button
             size="sm"
             variant="outline"

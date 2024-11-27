@@ -22,7 +22,7 @@ const DocumentIdPage = ({ params }: DocumentIdPageProps) => {
         ssr: false,
         loading: () => (
           <div>
-            <div className="md:max-w-3xl lg:max-w-4xl mx-auto">
+            <div className="md:max-w-3xl lg:max-w-4xl xl:max-w-5xl mx-auto">
               <div className="space-y-4 pl-16">
                 <Skeleton className="h-14 w-[50%]" />
                 <Skeleton className="h-12 w-[80%]" />
@@ -55,7 +55,7 @@ const DocumentIdPage = ({ params }: DocumentIdPageProps) => {
     return (
       <div className="pt-[10vh]">
         <CoverImage.Skeleton />
-        <div className="md:max-w-3xl lg:max-w-4xl mx-auto">
+        <div className="md:max-w-3xl lg:max-w-4xl xl:max-w-5xl mx-auto">
           <div className="space-y-4 pl-16 pt-4">
             <Skeleton className="h-14 w-[50%]" />
             <Skeleton className="h-12 w-[80%]" />
@@ -70,9 +70,9 @@ const DocumentIdPage = ({ params }: DocumentIdPageProps) => {
   }
 
   return (
-    <div className="pb-40">
+    <div>
       <CoverImage url={document.coverImage} />
-      <div className="md:max-w-3xl lg:max-w-4xl mx-auto">
+      <div className="md:max-w-3xl lg:max-w-4xl xl:max-w-5xl mx-auto">
         <Toolbar initialData={document} />
         <Editor onChange={handleChange} initialContent={document.content} />
       </div>
