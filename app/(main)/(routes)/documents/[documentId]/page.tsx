@@ -29,7 +29,7 @@ const DocumentIdPage = ({ params }: DocumentIdPageProps) => {
                 <Skeleton className="h-10 w-[100%]" />
                 <Skeleton className="h-4 w-[60%]" />
                 <Skeleton className="h-24 w-[90%]" />
-                <Skeleton className="h-10 w-[100%]" />
+                <Skeleton className="h-16 w-[100%]" />
               </div>
             </div>
           </div>
@@ -62,7 +62,7 @@ const DocumentIdPage = ({ params }: DocumentIdPageProps) => {
             <Skeleton className="h-10 w-[100%]" />
             <Skeleton className="h-4 w-[60%]" />
             <Skeleton className="h-24 w-[90%]" />
-            <Skeleton className="h-10 w-[100%]" />
+            <Skeleton className="h-16 w-[100%]" />
           </div>
         </div>
       </div>
@@ -70,7 +70,7 @@ const DocumentIdPage = ({ params }: DocumentIdPageProps) => {
   }
 
   return (
-    <div>
+    <div className="pb-20">
       <CoverImage url={document.coverImage} />
       <div className="md:max-w-3xl lg:max-w-4xl xl:max-w-5xl mx-auto">
         <Toolbar initialData={document} />

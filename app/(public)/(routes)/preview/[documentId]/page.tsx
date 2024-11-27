@@ -29,7 +29,7 @@ const PreviewPage = ({ params }: DocumentIdPageProps) => {
                 <Skeleton className="h-10 w-[100%]" />
                 <Skeleton className="h-4 w-[60%]" />
                 <Skeleton className="h-24 w-[90%]" />
-                <Skeleton className="h-10 w-[100%]" />
+                <Skeleton className="h-16 w-[100%]" />
               </div>
             </div>
           </div>
@@ -62,7 +62,7 @@ const PreviewPage = ({ params }: DocumentIdPageProps) => {
             <Skeleton className="h-10 w-[100%]" />
             <Skeleton className="h-4 w-[60%]" />
             <Skeleton className="h-24 w-[90%]" />
-            <Skeleton className="h-10 w-[100%]" />
+            <Skeleton className="h-16 w-[100%]" />
           </div>
         </div>
       </div>
