@@ -4,6 +4,7 @@ import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { useState } from "react";
 import { Button } from "./ui/button";
+import { Skeleton } from "./ui/skeleton";
 import { useMutation } from "convex/react";
 import { useParams } from "next/navigation";
 import { ImageIcon, X } from "lucide-react";
@@ -77,4 +78,8 @@ export const CoverImage = ({ url, preview }: CoverImageProps) => {
       />
     </div>
   );
+};
+
+CoverImage.Skeleton = function CoverSkeleton() {
+  return <Skeleton className="w-full h-[28vh] rounded-none" />;
 };

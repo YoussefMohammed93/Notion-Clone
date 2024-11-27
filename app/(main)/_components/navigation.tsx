@@ -27,11 +27,12 @@ import { api } from "@/convex/_generated/api";
 import { DocumentList } from "./document-list";
 import { useSearch } from "@/hooks/use-search";
 import { UseSettings } from "@/hooks/use-settings";
-import { useParams, usePathname } from "next/navigation";
 import { ElementRef, useEffect, useRef, useState } from "react";
+import { useParams, usePathname, useRouter } from "next/navigation";
 import { useLayoutContext } from "@/components/providers/layout-provider";
 
 const Navigation = () => {
+  const router = useRouter();
   const search = useSearch();
   const params = useParams();
   const pathname = usePathname();
@@ -134,7 +135,9 @@ const Navigation = () => {
   };
 
   const onCreate = () => {
-    const promise = create({ title: "Untitled" });
+    const promise = create({ title: "Untitled" }).then((documentId) =>
+      router.push(`/documents/${documentId}`)
+    );
 
     toast.promise(promise, {
       success: "New note created!",

@@ -92,3 +92,72 @@ body,
     @apply bg-background text-foreground;
   }
 }
+
+.bn-default-styles p,
+.bn-default-styles h1,
+.bn-default-styles h2,
+.bn-default-styles h3,
+.bn-default-styles li {
+  padding: 10px !important;
+  padding-top: 8px !important;
+}
+
+.bn-block-content[data-content-type="numberedListItem"],
+.bn-block-content[data-content-type="bulletListItem"],
+.bn-block-content[data-content-type="checkListItem"] > div {
+  padding: 10px;
+  align-items: center;
+}
+
+input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  accent-color: #5ccd60;
+  cursor: pointer;
+}
+
+[labelledby="label-0ba9ea9c-f9c1-4392-8413-8015d4b8a6e9"] {
+  font-size: 16px;
+  color: #333;
+  margin-left: 8px;
+  cursor: pointer;
+}
+
+input[type="checkbox"]:hover {
+  border: 2px solid #5ccd60;
+}
+
+input[type="checkbox"]:checked {
+  background-color: #ffffff;
+  border-color: #4caf50;
+}
+
+@media (max-width: 1024px) {
+  .bn-visual-media,
+  .bn-block-outer,
+  .bn-file-and-caption-wrapper,
+  .bn-file-caption {
+    width: 475px;
+    max-width: 475px;
+  }
+}
+
+@media (max-width: 768px) {
+  .bn-visual-media,
+  .bn-block-outer,
+  .bn-file-and-caption-wrapper,
+  .bn-file-caption {
+    width: 450px;
+    max-width: 450px;
+  }
+}
+
+@media (max-width: 640px) {
+  .bn-visual-media,
+  .bn-block-outer,
+  .bn-file-and-caption-wrapper,
+  .bn-file-caption {
+    width: 300px;
+    max-width: 300px;
+  }
+}
