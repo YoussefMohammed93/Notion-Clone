@@ -29,8 +29,8 @@ export const metadata: Metadata = {
   description: SiteConfig.description,
   icons: [
     {
-      url: "/notion.png",
-      href: "/notion.png",
+      url: "/favicon.png",
+      href: "/favicon.png",
     },
   ],
 };
